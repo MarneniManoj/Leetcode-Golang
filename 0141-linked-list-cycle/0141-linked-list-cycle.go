@@ -8,14 +8,13 @@
 func hasCycle(head *ListNode) bool {
 
     m := make(map[*ListNode]bool)
-    for head!=nil {
-        fmt.Println(head.Val)
-        if _, ok := m[head]; ok {
-            return true
-        }
+    ok := false
+
+    for ; !ok && head != nil ; _, ok = m[head] {
         m[head] = true
         head = head.Next
     }
-    return false
+
+    return ok
 
 }
