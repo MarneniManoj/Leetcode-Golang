@@ -7,20 +7,15 @@
  */
 func hasCycle(head *ListNode) bool {
 
-    // maintain 2 pointers
-    // one iterates at 1 speed and other in 2 speed.
-    // if both collides then a cycle.
-    speed := head
-    slow := head
-
-    for (speed != nil && speed.Next!= nil) {
-        speed = speed.Next.Next
-        slow = slow.Next
-        if speed == slow {
+    m := make(map[*ListNode]bool)
+    for head!=nil {
+        fmt.Println(head.Val)
+        if _, ok := m[head]; ok {
             return true
         }
+        m[head] = true
+        head = head.Next
     }
-
     return false
 
 }
